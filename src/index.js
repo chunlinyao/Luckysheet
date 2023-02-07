@@ -1,5 +1,6 @@
 import './utils/math'
-import { luckysheet } from './core'
+window['oldJQuery'] = jQuery.noConflict(true);
+const luckysheet = import('./core').then((e) => window['luckysheet'] = e.luckysheet);
 import __firefox from './utils/polyfill'
 // Prevent gulp warning: 'Use of eval is strongly discouraged, as it poses security risks and may cause issues with minification'
 // window.evall = window.eval;
@@ -11,4 +12,4 @@ if(window.addEventListener && (navigator.userAgent.indexOf("Firefox") > 0)){
 // export default luckysheet;
 
 // use esbuild,bundle iife format
-module.exports =  luckysheet
+module.exports = luckysheet;
